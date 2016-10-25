@@ -18,7 +18,14 @@
 }
 .accordion-noborder .accordion-body{
 	border-width:0px;
-}.calendar{
+}
+.accordion-collapse{
+	background:url('images/accordion_collapse.png') no-repeat;
+}
+.accordion-expand{
+	background:url('images/accordion_expand.png') no-repeat;
+}
+.calendar{
 	background:#fff;
 	border:1px solid #d3d3d3;
 	padding:1px;
@@ -39,8 +46,8 @@
 }
 .calendar-title span{
 	position:relative;
-	top:4px;
-	display:incline-block;
+	top:2px;
+	display:inline-block;
 	padding:3px;
 	cursor:pointer;
 	-moz-border-radius:4px;
@@ -388,7 +395,15 @@
 .datagrid-view1 .datagrid-body{
 	overflow:hidden;
 }
-.datagrid-body td{
+.datagrid-footer{
+	overflow:hidden;
+}
+.datagrid-footer-inner{
+	border-top:1px solid #ccc;
+	width:10000px;
+	float:left;
+}
+.datagrid-body td,.datagrid-footer td{
 	font-size:12px;
 	border-right:1px dotted #ccc;
 	border-bottom:1px dotted #ccc;
@@ -396,7 +411,7 @@
 	padding:0;
 	margin:0;
 }
-.datagrid-body .datagrid-cell{
+.datagrid-body .datagrid-cell,.datagrid-footer .datagrid-cell{
 	overflow:hidden;
 	margin:0;
 	padding:3px 4px;
@@ -408,6 +423,8 @@
 }
 .datagrid-cell-check{
 	padding:3px 6px;
+	font-size:1px;
+	overflow:hidden;
 }
 .datagrid-header-check input{
 	margin:0;
@@ -420,6 +437,12 @@
 	padding:0;
 	width:15px;
 	height:15px;
+}
+.datagrid-row-collapse{
+	background:url('images/datagrid_row_collapse.gif') no-repeat center center;
+}
+.datagrid-row-expand{
+	background:url('images/datagrid_row_expand.gif') no-repeat center center;
 }
 .datagrid-row-alt{
 	background:#fafafa;
@@ -453,10 +476,8 @@
 	font-size:12px;
 	border:1px solid #ccc;
 	padding:3px 2px;
-}.datebox-calendar{
-	position:absolute;
-	border:1px solid #d3d3d3;
-	width:180px;
+}.datebox .combo-arrow{
+	background:url('images/datebox_arrow.png') no-repeat center center;
 }
 .datebox-calendar-inner{
 	height:180px;
@@ -466,6 +487,7 @@
 	padding:2px 5px;
 	font-size:12px;
 	background-color:#fafafa;
+	text-align:center;
 }
 .datebox-current,.datebox-close{
 	float:left;
@@ -475,6 +497,11 @@
 }
 .datebox-close{
 	float:right;
+}
+.datebox-ok{
+	color:#888;
+	text-decoration:none;
+	font-weight:bold;
 }
 .datebox-button-hover{
 	color:#A4BED4;
@@ -776,6 +803,7 @@ a.m-btn-plain-active{
 }
 .pagination table{
 	float:left;
+	height:30px;
 }
 .pagination-btn-separator{
 	float:left;
@@ -1012,6 +1040,14 @@ a.s-btn-plain-active .s-btn-downarrow{
 	cursor:pointer;
 	background:#efefef url('images/tabs_rightarrow.png') no-repeat 2px 5px;
 }
+.tabs-tool{
+	position:absolute;
+	top:-1px;
+	border:1px solid #D3D3D3;
+	padding:1px;
+	background:#efefef;
+	overflow:hidden;
+}
 .tabs-header-plain .tabs-scroller-left{
 	top:2px;
 	height:25px!important;
@@ -1021,6 +1057,10 @@ a.s-btn-plain-active .s-btn-downarrow{
 	top:2px;
 	height:25px!important;
 	height:27px;
+}
+.tabs-header-plain .tabs-tool{
+	top:2px;
+	padding-top:0;
 }
 .tabs-scroller-over{
 	background-color:#fafafa;
@@ -1136,7 +1176,7 @@ a.s-btn-plain-active .s-btn-downarrow{
 	padding:0px;
 	border:1px solid #D3D3D3;
 	border-top:0px;
-	overflow:auto;
+	overflow:hidden;
 }
 .tabs-panels-noborder{
 	border:0px;
@@ -1211,7 +1251,6 @@ a.s-btn-plain-active .s-btn-downarrow{
 }
 .tree-title{
 	display:inline-block;
-	line-height1:18px;
 	text-decoration:none;
 	vertical-align:middle;
 	padding:1px 2px 1px 2px;
@@ -1238,7 +1277,37 @@ a.s-btn-plain-active .s-btn-downarrow{
 }
 .tree-checkbox2{
 	background:url('images/tree_checkbox_2.gif') no-repeat;
-}.validatebox-invalid{
+}
+.tree-node-proxy{
+	font-size:12px;
+	padding:1px 2px 1px 18px;
+	background:#fafafa;
+	border:1px solid #ccc;
+}
+.tree-dnd-yes{
+	background:url('images/tree_dnd_yes.png') no-repeat 0 center;
+}
+.tree-dnd-no{
+	background:url('images/tree_dnd_no.png') no-repeat 0 center;
+}
+.tree-node-top{
+	border-top:1px dotted red;
+}
+.tree-node-bottom{
+	border-bottom:1px dotted red;
+}
+.tree-node-append .tree-title{
+	border:1px dotted red;
+}
+.tree-editor{
+	border:1px solid #ccc;
+	font-size:12px;
+	line-height:16px;
+	width:80px;
+	position:absolute;
+	top:0;
+}
+.validatebox-invalid{
 	background:#FFFFEE url('images/validatebox_warning.png') no-repeat right 1px;
 }
 .validatebox-tip{

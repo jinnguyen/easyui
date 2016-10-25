@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.2
+ * jQuery EasyUI 1.2.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -47,7 +47,7 @@ $(_5).attr("href","javascript:void(0)");
 var _9=$(_5).attr("onclick");
 if(_9){
 _7.onclick=_9;
-$(_5).attr("onclick",null);
+$(_5).attr("onclick","");
 }
 $(_5).addClass("l-btn-disabled");
 }else{
