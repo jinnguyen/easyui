@@ -2,34 +2,35 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>ProgressBar - jQuery EasyUI Demo</title>
+	<title>Slider - jQuery EasyUI Demo</title>
 	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="demo.css">
 	<script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
-	<script>
-		function test(){
-			var value = $('#p').progressbar('getValue');
-			if (value < 100){
-				value += Math.floor(Math.random() * 10);
-				$('#p').progressbar('setValue', value);
-				setTimeout(arguments.callee, 200);
-			}
-		}
+	<script type="text/javascript">
+		$(function(){
+			$('#ss').slider({
+				tipFormatter: function(value){
+					return value + 'px';
+				},
+				onChange: function(value){
+					$('#ff').css('font-size', value);
+				}
+			});
+		})
 	</script>
 </head>
 <body>
-	<h2>ProgressBar</h2>
+	<h2>Slider</h2>
 	<div class="demo-info">
 		<div class="demo-tip icon-tip"></div>
-		<div>Click below button to show progress information.</div>
+		<div>Drag the slider to change the font size.</div>
 	</div>
 	
-	<div style="margin: 10px 0">
-		<a href="#" class="easyui-linkbutton" onclick="test()">Test</a>
+	<div style="margin-top:20px;">
+		<input id="ss" value="12" showTip="true" rule="[0,'|',25,'|',50,'|',75,'|',100]" style="width:300px">
 	</div>
-	
-	<div id="p" class="easyui-progressbar" style="width:400px;"></div>
+	<div id="ff" style="margin-top:50px;font-size:12px">jQuery EasyUI</div>
 </body>
 </html>

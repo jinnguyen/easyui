@@ -1,3 +1,29 @@
+Version 1.2.6
+-------------
+* Bug
+ * tabs: Call 'add' method with 'selected:false' option, the added tab panel is always selected. fixed.
+ * treegrid: The 'onSelect' and 'onUnselect' events can't be triggered. fixed.
+ * treegrid: Cannot display zero value field. fixed. 
+* Improvement
+ * propertygrid: Add 'expandGroup' and 'collapseGroup' methods.
+ * layout: Allow users to create collapsed layout panels by assigning 'collapsed' property to true.
+ * layout: Add 'add' and 'remove' methods that allow users to dynamically add or remove region panel.
+ * layout: Additional tool icons can be added on region panel header.
+ * calendar: Add 'firstDay' option that allow users to set first day of week. Sunday is 0, Monday is 1, ...
+ * tree: Add 'lines' option, true to display tree lines. 
+ * tree: Add 'loadFilter' option that allow users to change data format before loading into the tree.
+ * tree: Add 'loader' option that allow users to define how to load data from remote server.
+ * treegrid: Add 'onClickCell' and 'onDblClickCell' callback function options.
+ * datagrid: Add 'autoRowHeight' property that allow users to determine if set the row height based on the contents of that row.
+ * datagrid: Improve performance to load large data set.
+ * datagrid: Add 'loader' option that allow users to define how to load data from remote server.
+ * treegrid: Add 'loader' option that allow users to define how to load data from remote server.
+ * combobox: Add 'onBeforeLoad' callback event function.
+ * combobox: Add 'loader' option that allow users to define how to load data from remote server.
+ * Add support for other loading mode such as dwr,xml,etc.
+* New Plugins
+ * slider: Allows the user to choose a numeric value from a finite range.
+
 Version 1.2.5
 -------------
 * Bug
