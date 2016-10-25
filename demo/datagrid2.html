@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="demo.css">
-	<script type="text/javascript" src="../jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="../jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
 	<script>
 		var products = [
@@ -31,7 +31,7 @@
 					text:'append',
 					iconCls:'icon-add',
 					handler:function(){
-					$('#tt').datagrid('endEdit', lastIndex);
+						$('#tt').datagrid('endEdit', lastIndex);
 						$('#tt').datagrid('appendRow',{
 							itemid:'',
 							productid:'',
@@ -40,7 +40,7 @@
 							attr1:'',
 							status:'P'
 						});
-						var lastIndex = $('#tt').datagrid('getRows').length-1;
+						lastIndex = $('#tt').datagrid('getRows').length-1;
 						$('#tt').datagrid('selectRow', lastIndex);
 						$('#tt').datagrid('beginEdit', lastIndex);
 					}
