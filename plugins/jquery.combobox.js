@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.1.1
+ * jQuery EasyUI 1.1.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -183,6 +183,7 @@ _38.push(_39);
 return _38;
 };
 function _3a(_3b,_3c){
+var _3d=$.data(_3b,"combobox").options;
 $.data(_3b,"combobox").data=_3c;
 var _3d=$.data(_3b,"combobox").options;
 var _3e=$.data(_3b,"combobox").content;
@@ -199,6 +200,7 @@ _3f=_3c[i];
 if(_3f){
 _26(_3b,_3f);
 }
+_3d.onLoadSuccess.call(_3b,_3c);
 $(".combobox-item",_3e).hover(function(){
 $(this).addClass("combobox-item-hover");
 },function(){
@@ -218,7 +220,6 @@ return;
 }
 $.ajax({url:_43.url,dataType:"json",success:function(_44){
 _3a(_42,_44);
-_43.onLoadSuccess.apply(this,arguments);
 },error:function(){
 _43.onLoadError.apply(this,arguments);
 }});
@@ -240,19 +241,26 @@ _4b.addClass("combobox-item-selected");
 _4b.hide();
 }
 });
-_49.show();
-if($.fn.window){
-_49.css("z-index",$.fn.window.defaults.zIndex++);
-}
-(function(){
-if(_49.is(":visible")){
-_49.css({display:"block",left:_48.offset().left,top:_48.offset().top+_48.outerHeight()});
-setTimeout(arguments.callee,200);
-}
-})();
 if(_49.find("div.combobox-item-selected").length==0){
 _49.find("div.combobox-item:visible:first").addClass("combobox-item-selected");
 }
+if($.fn.window){
+_49.css("z-index",$.fn.window.defaults.zIndex++);
+}
+_49.show();
+(function(){
+if(_49.is(":visible")){
+var top=_48.offset().top+_48.outerHeight();
+if(top+_49.outerHeight()>$(window).height()+$(document).scrollTop()){
+top=_48.offset().top-_49.outerHeight();
+}
+if(top<$(document).scrollTop()){
+top=_48.offset().top+_48.outerHeight();
+}
+_49.css({display:"block",left:_48.offset().left,top:top});
+setTimeout(arguments.callee,200);
+}
+})();
 };
 function _22(_4c,_4d){
 if($.fn.validatebox){

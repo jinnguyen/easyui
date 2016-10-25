@@ -264,14 +264,8 @@
 	display:none;
 	border:1px solid #d3d3d3;
 	overflow:auto;
-}.datagrid{
-	font-size:12px;
-	border:1px solid #D3D3D3;
-	overflow1:hidden;
-	background:#fff;
-}
-.datagrid-noborder{
-	border-width:0px;
+}.datagrid .panel-body{
+	overflow:hidden;
 }
 .datagrid-wrap{
 	position:relative;
@@ -389,7 +383,7 @@
 }
 .datagrid-header .datagrid-cell{
 	margin:0;
-	padding:4px 2px 4px 4px;
+	padding:3px 4px;
 	white-space:nowrap;
 	word-wrap:normal;
 	overflow:hidden;
@@ -409,10 +403,12 @@
 	margin:0px;
 	padding:3px 0px;
 }
+.datagrid-td-rownumber{
+	background:#fafafa url('images/datagrid_header_bg.gif') repeat-x left bottom;
+}
 .datagrid-cell-rownumber{
 	width:25px;
 	text-align:center;
-	background:#fafafa url('images/datagrid_header_bg.gif') repeat-x left bottom;
 	margin:0px;
 	padding:3px 0px;
 }
@@ -461,11 +457,6 @@
 	width:15px;
 	height:15px;
 }
-.datagrid-body .datagrid-cell-height{
-	height:16px!important;
-	*height:22px;
-	line-height:16px;
-}
 .datagrid-row-alt{
 	background:#fafafa;
 }
@@ -488,12 +479,6 @@
 }
 .datagrid-body .datagrid-editable{
 	padding:0;
-	height:auto!important;
-	*height:auto;
-}
-.datagrid-body .datagrid-editable table{
-	width:100%;
-	height:100%;
 }
 .datagrid-body .datagrid-editable td{
 	border:0;
@@ -663,7 +648,8 @@ a.l-btn-plain{
 	background:transparent;
 	padding-right:5px;
 	border:1px solid transparent;
-	_border:1px solid #efefef;
+	_border:0px solid #efefef;
+	_padding:1px 6px 1px 1px;
 }
 
 a.l-btn-disabled{
@@ -705,6 +691,7 @@ a:hover.l-btn span.l-btn-left{
 a:hover.l-btn-plain{
 	border:1px solid #d3d3d3;
 	background:url('images/button_plain_hover.png') repeat-x left bottom;
+	_padding:0px 5px 0px 0px;
 }
 a:hover.l-btn-disabled{
 	background-position:top right;
@@ -730,6 +717,7 @@ a:hover.l-btn-disabled span.l-btn-left{
 	font-size:12px;
 	cursor:pointer;
 	border:1px solid transparent;
+	_border:1px solid #f0f0f0;
 }
 .menu-text{
 	position:absolute;

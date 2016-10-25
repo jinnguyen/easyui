@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.1.1
+ * jQuery EasyUI 1.1.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -194,9 +194,6 @@ if(_1a.fit==true){
 _2(_d);
 }
 return false;
-});
-$(window).resize(function(){
-_2(_d);
 });
 return _19;
 };
@@ -453,6 +450,10 @@ return false;
 $.fn.layout=function(_28,_29){
 if(typeof _28=="string"){
 switch(_28){
+case "resize":
+return this.each(function(){
+_2(this);
+});
 case "panel":
 return $.data(this[0],"layout").panels[_29];
 case "collapse":
