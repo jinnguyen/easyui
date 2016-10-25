@@ -1,7 +1,12 @@
 {
   "name": "jinnguyen/easyui",
   "description": "jQuery EasyUI framework helps you build your web pages easily. Homepage: http://easyui.com",
-  "author": "Stworthy <stworthy@gmail.com>",
+  "authors": [
+        {
+            "name": "Stworthy",
+            "email": "stworthy@gmail.com"
+        }
+   ],
   "license": "GPL License",
   "homepage": "http://easyui.com"
 }
