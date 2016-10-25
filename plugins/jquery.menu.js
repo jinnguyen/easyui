@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.1.2
+ * jQuery EasyUI 1.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -94,7 +94,7 @@ _12.html("&nbsp;");
 }else{
 var _13=_12.addClass("menu-item").html();
 _12.empty().append($("<div class=\"menu-text\"></div>").html(_13));
-var _14=_12.attr("icon");
+var _14=_12.attr("iconCls")||_12.attr("icon");
 if(_14){
 $("<div class=\"menu-icon\"></div>").addClass(_14).appendTo(_12);
 }
@@ -170,16 +170,7 @@ m.hide();
 };
 $.fn.menu=function(_22,_23){
 if(typeof _22=="string"){
-switch(_22){
-case "show":
-return this.each(function(){
-_1a(this,_23);
-});
-case "hide":
-return this.each(function(){
-_16(this);
-});
-}
+return $.fn.menu.methods[_22](this,_23);
 }
 _22=_22||{};
 return this.each(function(){
@@ -193,6 +184,15 @@ _1(this);
 $(this).css({left:_24.options.left,top:_24.options.top});
 });
 };
+$.fn.menu.methods={show:function(jq,pos){
+return jq.each(function(){
+_1a(this,pos);
+});
+},hide:function(jq){
+return jq.each(function(){
+_16(this);
+});
+}};
 $.fn.menu.defaults={zIndex:110000,left:0,top:0,onShow:function(){
 },onHide:function(){
 }};

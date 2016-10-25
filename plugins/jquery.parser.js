@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.1.2
+ * jQuery EasyUI 1.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -8,7 +8,7 @@
  * 
  */
 (function($){
-$.parser={auto:true,plugins:["linkbutton","menu","menubutton","splitbutton","layout","tree","window","dialog","datagrid","combobox","combotree","numberbox","validatebox","calendar","datebox","panel","tabs","accordion"],parse:function(_1){
+$.parser={auto:true,plugins:["linkbutton","menu","menubutton","splitbutton","layout","tree","window","dialog","datagrid","combobox","combotree","numberbox","validatebox","numberspinner","timespinner","calendar","datebox","panel","tabs","accordion"],parse:function(_1){
 if($.parser.auto){
 for(var i=0;i<$.parser.plugins.length;i++){
 (function(){

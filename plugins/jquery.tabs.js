@@ -1,5 +1,5 @@
 ﻿/**
- * jQuery EasyUI 1.1.2
+ * jQuery EasyUI 1.2
  * 
  * Licensed under the GPL:
  *   http://www.gnu.org/licenses/gpl.txt
@@ -193,185 +193,204 @@ _20(_35);
 _39(_35,_36.title);
 };
 function _3a(_3b,_3c){
+var _3d=$.data(_3b,"tabs").selectHis;
 var pp=_3c.tab;
+var _3e=pp.panel("options").title;
 pp.panel($.extend({},_3c.options,{iconCls:(_3c.options.icon?_3c.options.icon:undefined)}));
-var _3d=pp.panel("options");
-var tab=_3d.tab;
+var _3f=pp.panel("options");
+var tab=_3f.tab;
 tab.find("span.tabs-icon").attr("class","tabs-icon");
 tab.find("a.tabs-close").remove();
-tab.find("span.tabs-title").html(_3d.title);
-if(_3d.closable){
+tab.find("span.tabs-title").html(_3f.title);
+if(_3f.closable){
 tab.find("span.tabs-title").addClass("tabs-closable");
 $("<a href=\"javascript:void(0)\" class=\"tabs-close\"></a>").appendTo(tab);
 }else{
 tab.find("span.tabs-title").removeClass("tabs-closable");
 }
-if(_3d.iconCls){
+if(_3f.iconCls){
 tab.find("span.tabs-title").addClass("tabs-with-icon");
-tab.find("span.tabs-icon").addClass(_3d.iconCls);
+tab.find("span.tabs-icon").addClass(_3f.iconCls);
 }else{
 tab.find("span.tabs-title").removeClass("tabs-with-icon");
 }
+if(_3e!=_3f.title){
+for(var i=0;i<_3d.length;i++){
+if(_3d[i]==_3e){
+_3d[i]=_3f.title;
+}
+}
+}
 _20(_3b);
-$.data(_3b,"tabs").options.onUpdate.call(_3b,_3d.title);
+$.data(_3b,"tabs").options.onUpdate.call(_3b,_3f.title);
 };
-function _2a(_3e,_3f){
-var _40=$.data(_3e,"tabs").options;
-var _41=$.data(_3e,"tabs").tabs;
-var tab=_42(_3e,_3f,true);
+function _2a(_40,_41){
+var _42=$.data(_40,"tabs").options;
+var _43=$.data(_40,"tabs").tabs;
+var _44=$.data(_40,"tabs").selectHis;
+var tab=_45(_40,_41,true);
 if(!tab){
 return;
 }
-if(_40.onBeforeClose.call(_3e,_3f)==false){
+if(_42.onBeforeClose.call(_40,_41)==false){
 return;
 }
 tab.panel("options").tab.remove();
 tab.panel("destroy");
-_40.onClose.call(_3e,_3f);
-_7(_3e);
-var _43=_17(_3e);
-if(_43){
-_39(_3e,_43.panel("options").title);
+_42.onClose.call(_40,_41);
+_7(_40);
+for(var i=0;i<_44.length;i++){
+if(_44[i]==_41){
+_44.splice(i,1);
+i--;
+}
+}
+var _46=_44.pop();
+if(_46){
+_39(_40,_46);
 }else{
-if(_41.length){
-_39(_3e,_41[0].panel("options").title);
+if(_43.length){
+_39(_40,_43[0].panel("options").title);
 }
 }
 };
-function _42(_44,_45,_46){
-var _47=$.data(_44,"tabs").tabs;
-for(var i=0;i<_47.length;i++){
-var tab=_47[i];
-if(tab.panel("options").title==_45){
-if(_46){
-_47.splice(i,1);
+function _45(_47,_48,_49){
+var _4a=$.data(_47,"tabs").tabs;
+for(var i=0;i<_4a.length;i++){
+var tab=_4a[i];
+if(tab.panel("options").title==_48){
+if(_49){
+_4a.splice(i,1);
 }
 return tab;
 }
 }
 return null;
 };
-function _17(_48){
-var _49=$.data(_48,"tabs").tabs;
-for(var i=0;i<_49.length;i++){
-var tab=_49[i];
+function _17(_4b){
+var _4c=$.data(_4b,"tabs").tabs;
+for(var i=0;i<_4c.length;i++){
+var tab=_4c[i];
 if(tab.panel("options").closed==false){
 return tab;
 }
 }
 return null;
 };
-function _4a(_4b){
-var _4c=$.data(_4b,"tabs").tabs;
-for(var i=0;i<_4c.length;i++){
-var tab=_4c[i];
+function _4d(_4e){
+var _4f=$.data(_4e,"tabs").tabs;
+for(var i=0;i<_4f.length;i++){
+var tab=_4f[i];
 if(tab.panel("options").selected){
-_39(_4b,tab.panel("options").title);
+_39(_4e,tab.panel("options").title);
 return;
 }
 }
-if(_4c.length){
-_39(_4b,_4c[0].panel("options").title);
+if(_4f.length){
+_39(_4e,_4f[0].panel("options").title);
 }
 };
-function _39(_4d,_4e){
-var _4f=$.data(_4d,"tabs").options;
-var _50=$.data(_4d,"tabs").tabs;
-if(_50.length==0){
+function _39(_50,_51){
+var _52=$.data(_50,"tabs").options;
+var _53=$.data(_50,"tabs").tabs;
+var _54=$.data(_50,"tabs").selectHis;
+if(_53.length==0){
 return;
 }
-var _51=_42(_4d,_4e);
-if(!_51){
+var _55=_45(_50,_51);
+if(!_55){
 return;
 }
-var _52=_17(_4d);
-if(_52){
-_52.panel("close");
-_52.panel("options").tab.removeClass("tabs-selected");
+var _56=_17(_50);
+if(_56){
+_56.panel("close");
+_56.panel("options").tab.removeClass("tabs-selected");
 }
-_51.panel("open");
-var tab=_51.panel("options").tab;
+_55.panel("open");
+var tab=_55.panel("options").tab;
 tab.addClass("tabs-selected");
-var _53=$(_4d).find(">div.tabs-header div.tabs-wrap");
-var _54=tab.position().left+_53.scrollLeft();
-var _55=_54-_53.scrollLeft();
-var _56=_55+tab.outerWidth();
-if(_55<0||_56>_53.innerWidth()){
-var pos=Math.min(_54-(_53.width()-tab.width())/2,_1(_4d));
-_53.animate({scrollLeft:pos},_4f.scrollDuration);
+var _57=$(_50).find(">div.tabs-header div.tabs-wrap");
+var _58=tab.position().left+_57.scrollLeft();
+var _59=_58-_57.scrollLeft();
+var _5a=_59+tab.outerWidth();
+if(_59<0||_5a>_57.innerWidth()){
+var pos=Math.min(_58-(_57.width()-tab.width())/2,_1(_50));
+_57.animate({scrollLeft:pos},_52.scrollDuration);
 }else{
-var pos=Math.min(_53.scrollLeft(),_1(_4d));
-_53.animate({scrollLeft:pos},_4f.scrollDuration);
+var pos=Math.min(_57.scrollLeft(),_1(_50));
+_57.animate({scrollLeft:pos},_52.scrollDuration);
 }
-_14(_4d);
-_4f.onSelect.call(_4d,_4e);
+_14(_50);
+_54.push(_51);
+_52.onSelect.call(_50,_51);
 };
-function _57(_58,_59){
-return _42(_58,_59)!=null;
+function _5b(_5c,_5d){
+return _45(_5c,_5d)!=null;
 };
-$.fn.tabs=function(_5a,_5b){
-if(typeof _5a=="string"){
-switch(_5a){
-case "options":
-return $.data(this[0],"tabs").options;
-case "tabs":
-return $.data(this[0],"tabs").tabs;
-case "resize":
-return this.each(function(){
-_c(this);
-_14(this);
-});
-case "add":
-return this.each(function(){
-_34(this,_5b);
-});
-case "close":
-return this.each(function(){
-_2a(this,_5b);
-});
-case "getTab":
-return _42(this[0],_5b);
-case "getSelected":
-return _17(this[0]);
-case "select":
-return this.each(function(){
-_39(this,_5b);
-});
-case "exists":
-return _57(this[0],_5b);
-case "update":
-return this.each(function(){
-_3a(this,_5b);
-});
+$.fn.tabs=function(_5e,_5f){
+if(typeof _5e=="string"){
+return $.fn.tabs.methods[_5e](this,_5f);
 }
-}
-_5a=_5a||{};
+_5e=_5e||{};
 return this.each(function(){
-var _5c=$.data(this,"tabs");
-var _5d;
-if(_5c){
-_5d=$.extend(_5c.options,_5a);
-_5c.options=_5d;
+var _60=$.data(this,"tabs");
+var _61;
+if(_60){
+_61=$.extend(_60.options,_5e);
+_60.options=_61;
 }else{
-var t=$(this);
-_5d=$.extend({},$.fn.tabs.defaults,{width:(parseInt(t.css("width"))||undefined),height:(parseInt(t.css("height"))||undefined),fit:(t.attr("fit")?t.attr("fit")=="true":undefined),border:(t.attr("border")?t.attr("border")=="true":undefined),plain:(t.attr("plain")?t.attr("plain")=="true":undefined)},_5a);
-var _5e=_1b(this);
-_5c=$.data(this,"tabs",{options:_5d,tabs:_5e});
+$.data(this,"tabs",{options:$.extend({},$.fn.tabs.defaults,$.fn.tabs.parseOptions(this),_5e),tabs:_1b(this),selectHis:[]});
 }
 _20(this);
 _c(this);
-var _5f=this;
+var _62=this;
 setTimeout(function(){
-_4a(_5f);
+_4d(_62);
 },0);
 });
 };
-$.fn.tabs.defaults={width:"auto",height:"auto",idSeed:0,plain:false,fit:false,border:true,scrollIncrement:100,scrollDuration:400,onLoad:function(_60){
-},onSelect:function(_61){
-},onBeforeClose:function(_62){
-},onClose:function(_63){
-},onAdd:function(_64){
-},onUpdate:function(_65){
+$.fn.tabs.methods={options:function(jq){
+return $.data(jq[0],"tabs").options;
+},tabs:function(jq){
+return $.data(jq[0],"tabs").tabs;
+},resize:function(jq){
+return jq.each(function(){
+_c(this);
+_14(this);
+});
+},add:function(jq,_63){
+return jq.each(function(){
+_34(this,_63);
+});
+},close:function(jq,_64){
+return jq.each(function(){
+_2a(this,_64);
+});
+},getTab:function(jq,_65){
+return _45(jq[0],_65);
+},getSelected:function(jq){
+return _17(jq[0]);
+},select:function(jq,_66){
+return jq.each(function(){
+_39(this,_66);
+});
+},exists:function(jq,_67){
+return _5b(jq[0],_67);
+},update:function(jq,_68){
+return jq.each(function(){
+_3a(this,_68);
+});
+}};
+$.fn.tabs.parseOptions=function(_69){
+var t=$(_69);
+return {width:(parseInt(_69.style.width)||undefined),height:(parseInt(_69.style.height)||undefined),fit:(t.attr("fit")?t.attr("fit")=="true":undefined),border:(t.attr("border")?t.attr("border")=="true":undefined),plain:(t.attr("plain")?t.attr("plain")=="true":undefined)};
+};
+$.fn.tabs.defaults={width:"auto",height:"auto",plain:false,fit:false,border:true,scrollIncrement:100,scrollDuration:400,onLoad:function(_6a){
+},onSelect:function(_6b){
+},onBeforeClose:function(_6c){
+},onClose:function(_6d){
+},onAdd:function(_6e){
+},onUpdate:function(_6f){
 }};
 })(jQuery);
 
